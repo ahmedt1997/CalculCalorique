@@ -1,0 +1,72 @@
+<h1>Calculez votre besoin calorique journalier pour perdre, prendre ou stabiliser votre poids</h1>
+
+<!--Calculer(poids.value,taille.value,age.value)-->
+<form #form="ngForm" (ngSubmit)="Calculer(poids.value,taille.value,age.value)">
+  <div class="form-group">
+    <label for="taille" >Votre taille (en cm)</label>
+    <input id="taille"  required type="number" ngModel name="taille" #taille="ngModel" class="form-control" placeholder="taille">
+    <div class="alert alert-danger" *ngIf="! taille.valid && taille.touched">
+      Ce champ est obligatoire
+    </div>
+    <br>
+    <label for="poids">Votre poids (en kg)</label>
+    <input id="poids" required type="number" ngModel name="poids" #poids="ngModel" class="form-control" placeholder="poids">
+    <div class="alert alert-danger" *ngIf="! poids.valid && poids.touched">
+      Ce champ est obligatoire
+    </div>
+
+    <br>
+    <label for="age">Votre age</label>
+    <input id="age" required type="number" ngModel name="age" #age="ngModel" class="form-control" placeholder="age">
+    <div class="alert alert-danger" *ngIf="! age.valid && age.touched">
+      Ce champ est obligatoire
+    </div>
+
+    <label for="sex">Sex</label>
+    <select (change)="Selectionner($event)" id="sex" required ngModel name="sex" #sex="ngModel" class="form-control">
+      <option value="Femme">Femme</option>
+      <option value="Homme">Homme</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="! sex.valid && sex.touched">
+      Ce champ est obligatoire
+    </div>
+
+
+
+    <label for="activite">niveau d’activité</label>
+    <select (change)="Selectionner2($event)" id="activite" required ngModel name="activite" #activite="ngModel" class="form-control">
+      <option value="sédentaire">sédentaire</option>
+      <option value="activité physique légère"> activité physique légère</option>
+      <option value="activité physique modérée">activité physique modérée</option>
+      <option value="activité physique intense">activité physique intense</option>
+    </select>
+    <div class="alert alert-danger" *ngIf="! activite.valid && activite.touched">
+      Ce champ est obligatoire
+    </div>
+
+
+    <br>
+    <button class="btn btn-primary" [disabled]="!form.valid" type="submit">JE CALCULE MON IMC</button>
+
+    <div class="container">
+      <span *ngIf="Resultat">{{Resultat.toFixed(2)}} Calories</span>
+    </div>
+
+   <!-- <div class="container2" *ngIf="imc">
+      <h3>Resultat : </h3>
+      <p>Votre IMC (indice de masse corporelle) est de :</p>
+
+      <span class="resultat">
+                        {{imc.toFixed(1)}}
+                    </span>
+      <br>
+      <span class="msg">
+                        {{msg}}
+                    </span>
+      <p class="detail">
+        {{detail}}
+      </p>
+
+    </div>-->
+  </div>
+</form>

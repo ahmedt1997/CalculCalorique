@@ -1,0 +1,12 @@
+.container span {
+  font-size: 70px;
+  color: darkblue;
+}
+label{
+  font-weight: bold;
+  color: darkblue;
+}
+
+form{
+  padding-top: 10px;
+}
